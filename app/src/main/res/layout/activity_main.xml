@@ -8,13 +8,41 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cardCornerRadius="@dimen/dp40">
+        app:layout_constraintHeight_percent="0.48"
+        app:shapeAppearanceOverlay="@style/CustomHomeScreenCardAppearanceOverlay"
+        style="@style/CustomHomeScreenCardAppearance"
+        app:cardPreventCornerOverlap="false">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mtxtTotalAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="4000"
+                android:textColor="@color/colorLightGrey"
+                android:textSize="@dimen/sp36"
+                app:fontFamily="@font/ibm_plex_sans_semibold"
+                android:includeFontPadding="false"
+                android:layout_margin="@dimen/dp10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                style="@style/CustomHomeScreenEditText"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 

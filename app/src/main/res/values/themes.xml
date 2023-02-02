@@ -14,11 +14,29 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="CustomHomeScreenCard" parent="">
+    <style name="CustomHomeScreenCardAppearanceOverlay" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">0dp</item>
         <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerSizeBottomLeft">@dimen/dp40</item>
-        <item name="cornerSizeBottomRight">dp40</item>
+        <item name="cornerSizeBottomRight">@dimen/dp40</item>
     </style>
+
+    <style name="CustomHomeScreenCardAppearance" parent="">
+        <item name="cardBackgroundColor">@color/colorDarkerGrey</item>
+    </style>
+
+    <style name="CustomHomeScreenEditText" parent="Widget.MaterialComponents.TextView">
+        <item name="android:background">@drawable/custom_edit_text_background</item>
+        <item name="android:fontFamily">@font/ibm_plex_sans</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">@dimen/sp16</item>
+        <item name="android:textColor">@color/colorLightGrey</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:inputType">number</item>
+        <item name="android:imeOptions">actionDone</item>
+        <item name="android:layout_margin">@dimen/dp20</item>
+        <item name="layout_constraintHeight_percent">0.15</item>
+    </style>
+
 </resources>
