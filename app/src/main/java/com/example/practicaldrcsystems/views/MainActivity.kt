@@ -2,11 +2,14 @@ package com.example.practicaldrcsystems.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import com.example.practicaldrcsystems.R
 import com.example.practicaldrcsystems.adapters.DenominationNoOfNotesAdapter
+import com.example.practicaldrcsystems.consts.AppConsts
 import com.example.practicaldrcsystems.databinding.ActivityMainBinding
 import com.example.practicaldrcsystems.models.NotesAmountModel
 import com.example.practicaldrcsystems.utils.ExtFuncs.notifyUser
+import com.example.practicaldrcsystems.viewmodels.MainViewModel
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
@@ -20,6 +23,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var denominationNoOfNotesAdapter: DenominationNoOfNotesAdapter
     private var listOfNotes: ArrayList<NotesAmountModel> = ArrayList()
 
+    //for view model
+    private lateinit var mainViewModel: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -28,20 +34,14 @@ class MainActivity : AppCompatActivity() {
 
         initializeViews()
         initListeners()
+        initData()
     }
 
     //to initialize views
     private fun initializeViews(){
         binding.apply {
-            listOfNotes.add(NotesAmountModel(denomination = 2000, noOfNotes = 5))
-            listOfNotes.add(NotesAmountModel(denomination = 500, noOfNotes = 4))
-            listOfNotes.add(NotesAmountModel(denomination = 200, noOfNotes = 3))
-            listOfNotes.add(NotesAmountModel(denomination = 100, noOfNotes = 2))
-            listOfNotes.add(NotesAmountModel(denomination = 50, noOfNotes = 50))
-            listOfNotes.add(NotesAmountModel(denomination = 20, noOfNotes = 100))
-            listOfNotes.add(NotesAmountModel(denomination = 10, noOfNotes = 200))
+            mtxtTotalAmount.text = AppConsts.TOTAL_AMOUNT.toString()
         }
-        inflateListOfNotes(listOfNotes)
     }
 
     //to initialize click listeners
@@ -51,6 +51,25 @@ class MainActivity : AppCompatActivity() {
                 if (validateInputAmount(tietAmountToWithdrawInput.text.toString().trim())){
                     notifyUser("Accepted")
                 }
+            }
+        }
+    }
+
+    //to initialize data
+    private fun initData(){
+        mainViewModel =
+            ViewModelProvider(this).get(MainViewModel::class.java)
+
+        fetchNotesInMachineData()
+    }
+
+    //to fetch data of notes in ATM Machine
+    private fun fetchNotesInMachineData() {
+        mainViewModel.getNotesInATMMachine()?.observe(this) {
+            if (it.success) {
+                inflateListOfNotes(it.listOfNotes)
+            } else {
+                notifyUser(it.message)
             }
         }
     }

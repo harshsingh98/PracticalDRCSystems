@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cnstMainParent"
+    android:layout_margin="@dimen/dp5"
+    android:paddingBottom="@dimen/dp5"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.card.MaterialCardView
@@ -30,7 +32,7 @@
             android:textSize="@dimen/sp20"
             android:fontFamily="@font/ibm_plex_sans_semibold"
             android:includeFontPadding="false"
-            android:layout_margin="@dimen/dp16"/>
+            android:layout_margin="@dimen/dp10"/>
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -45,8 +47,8 @@
         app:strokeColor="@color/colorDarkerGrey"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.48"
-        app:layout_constraintHeight_percent="0.48"
+        app:layout_constraintWidth_percent="0.50"
+        app:layout_constraintHeight_percent="0.50"
         android:visibility="gone"
         tools:visibility="visible">
 
@@ -60,6 +62,8 @@
             android:fontFamily="@font/ibm_plex_sans_semibold"
             android:includeFontPadding="false"
             android:layout_margin="@dimen/dp5"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:layout_gravity="center"/>
 
     </com.google.android.material.card.MaterialCardView>
