@@ -13,4 +13,7 @@
     <dimen name="sp24">24sp</dimen>
     <dimen name="sp36">36sp</dimen>
     <dimen name="sp40">40sp</dimen>
+    <dimen name="dp1">1dp</dimen>
+    <dimen name="dp5">5dp</dimen>
+    <dimen name="sp12">12sp</dimen>
 </resources>
